@@ -1,4 +1,4 @@
 admin,admin123
 captain,captain123
 user, user123
-operator, operator123
+operator, operator123murgi,1234
