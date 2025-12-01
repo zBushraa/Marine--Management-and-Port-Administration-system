@@ -1,38 +1,75 @@
+🌊 Marine Management & Port Administration System
+A Modular, Java-Based Harbor Operations Platform Demonstrating Advanced OOP and MVC Architecture
 
-# ⚓ Harbor Management System
+The Marine Management & Port Administration System is a comprehensive Java application engineered to demonstrate advanced Object-Oriented Programming (OOP) principles—including abstraction, inheritance, interfaces, and runtime polymorphism—within a clean and modular Model–View–Controller (MVC) architecture.
 
-A complete Java-based Harbor Management System that demonstrates core Object-Oriented Programming (OOP) concepts including interfaces, abstract classes, inheritance, and polymorphism. The system is built with a clean MVC architecture and includes essential features like user authentication with file-based storage and comprehensive activity logging.
+Designed as a console-based yet enterprise-style solution, the system incorporates secure user authentication, file-based data persistence, structured vehicle management, and detailed operational logging. It serves as an excellent illustration of how core software engineering principles can be combined to develop maintainable, scalable, and production-ready applications.
 
-This project serves as an excellent example of applying fundamental software engineering principles to build a robust and maintainable console-based application.
+🚢 Core System Capabilities
+🔐 Secure User Authentication
 
-***
+A complete registration and login framework is included.
+User credentials are encrypted and stored safely in users.txt, ensuring confidentiality and preventing unauthorized access.
 
-## 🚢 Core Features
+🚛 Comprehensive Vehicle Management
 
-This system is packed with features that showcase a well-structured Java application.
+The system supports multiple marine and aerial vehicle types, each modeled through a modular class hierarchy:
 
--   🔐 **User Authentication**: A secure login and registration system. User credentials are encrypted and persisted in a local file (`users.txt`), ensuring data integrity and security.
+RiverBarge
 
--   🚛 **Vehicle Management**: Easily manage various types of vehicles within the harbor. The system supports different vehicle classes like `RiverBarge`, `SeaPlane`, and `Helicopter`, each with unique properties and behaviors.
+SeaPlane
 
--   🌊 **Polymorphism in Action**: Utilizes a `Sailer` interface to demonstrate polymorphism. Only vehicles that can dock (like `RiverBarge` and `SeaPlane`) implement this interface, allowing them to be treated uniformly when performing docking operations.
+Helicopter
 
--   💾 **File Persistence**: All critical data, including user accounts and activity logs, is stored in local files (`users.txt`, `activity.log`). This ensures that the application state is preserved across sessions.
+Each subclass extends a central Vehicle abstract class, enabling reuse, specialization, and clean structural organization.
 
--   📝 **Detailed Activity Logging**: Every significant action performed by a user—from logging in to managing vehicles—is recorded in `activity.log` with a precise timestamp. This provides a clear audit trail for debugging and monitoring.
+🌊 Runtime Polymorphism via Sailer Interface
 
--   🏛️ **MVC Architecture**: Built on the Model-View-Controller (MVC) design pattern, the system promotes a clean separation of concerns. This makes the codebase organized, easier to understand, and highly maintainable.
-    -   **Model**: Represents the data and business logic (e.g., `User`, `Vehicle`, `Harbor`).
-    -   **View**: Handles the presentation layer and user interaction (console output).
-    -   **Controller**: Acts as the intermediary, processing user input and updating the model and view.
+Vehicles capable of docking implement the Sailer interface.
+This design enables:
 
-***
+Uniform handling of docking operations
 
-## 📁 Project Structure
+Runtime selection of appropriate dock() implementations
 
-The project follows a standard Maven directory layout, ensuring clarity and build compatibility.
+Clean separation of capabilities versus classification
 
-```
+💾 Persistent Local Storage
+
+All critical application data—user accounts and system activity—is stored in local resource files:
+
+users.txt (credentials)
+
+activity.log (event audit history)
+
+This ensures continuity across application sessions without requiring any external database.
+
+📝 Detailed Operational Logging
+
+Every user action—authentication attempts, vehicle operations, dock events—is timestamped and recorded in activity.log.
+This provides an accurate audit trail suitable for:
+
+Debugging
+
+Monitoring
+
+System auditing
+
+🏛️ Clean MVC Architecture
+
+The application is built around a well-structured MVC design, allowing clear separation of responsibilities:
+
+Layer	Responsibility
+Model	Core domain logic and data structures (User, Harbor, Vehicle, etc.)
+View	Console-based user interface and interaction handling
+Controller	Orchestrates interaction between the model and view layers
+
+This design enables flexibility, maintainability, and scalability for future enhancements.
+
+📁 Project Structure
+
+The project follows the standard Maven layout for clarity and portability.
+
 .
 ├── src
 │   ├── main
@@ -44,13 +81,13 @@ The project follows a standard Maven directory layout, ensuring clarity and buil
 │   │   │           │   └── UserController.java
 │   │   │           ├── model
 │   │   │           │   ├── Harbor.java
-│   │   │           │   ├── Sailer.java         // Interface
+│   │   │           │   ├── Sailer.java        // Interface
 │   │   │           │   ├── User.java
 │   │   │           │   └── vehicles
 │   │   │           │       ├── Helicopter.java
 │   │   │           │       ├── RiverBarge.java
 │   │   │           │       ├── SeaPlane.java
-│   │   │           │       └── Vehicle.java        // Abstract Class
+│   │   │           │       └── Vehicle.java   // Abstract Class
 │   │   │           ├── util
 │   │   │           │   └── Logger.java
 │   │   │           ├── view
@@ -61,83 +98,80 @@ The project follows a standard Maven directory layout, ensuring clarity and buil
 │   │       ├── activity.log
 │   │       └── users.txt
 │   └── test
-│       └── ...
 └── pom.xml
-```
 
-### Key Components:
--   **`controller`**: Contains the logic that ties the model and view together.
--   **`model`**: Holds the core data structures, business objects, and interfaces. The `vehicles` sub-package demonstrates inheritance.
--   **`view`**: Manages all console input and output, presenting data to the user.
--   **`util`**: Includes utility classes like the `Logger`.
--   **`Main.java`**: The entry point of the application.
--   **`resources`**: Stores data files used for persistence.
+Component Overview
 
-***
+controller – Manages system workflows and orchestrates the interaction between model and view layers
 
-## 🚀 Getting Started
+model – Domain entities and business logic
 
-To get a local copy up and running, follow these simple steps.
+view – User-facing console interactions
 
-### Prerequisites
+util – Helper utilities
 
--   Java Development Kit (JDK) 11 or higher
--   Apache Maven (for dependency management and building)
+resources – Persistent storage assets
 
-### Installation & Execution
+🚀 Getting Started
+✔️ Prerequisites
 
-1.  **Clone the repository:**
-    ```sh
-    git clone https://github.com/your-username/harbor-management-system.git
-    cd harbor-management-system
-    ```
+Java Development Kit (JDK) 11+
 
-2.  **Compile the project using Maven:**
-    ```sh
-    mvn clean install
-    ```
+Apache Maven
 
-3.  **Run the application:**
-    ```sh
-    java -cp target/classes com.harbor.Main
-    ```
-    Alternatively, you can run the `Main.java` file directly from your favorite IDE.
+✔️ Installation
+git clone https://github.com/your-username/harbor-management-system.git
+cd harbor-management-system
 
-***
+✔️ Build the Project
+mvn clean install
 
-## 🧱 Core OOP Concepts Demonstrated
+✔️ Run the Application
+java -cp target/classes com.harbor.Main
 
-This project is a practical showcase of fundamental Object-Oriented Programming principles.
 
-### 1. Abstraction
--   **Abstract Class (`Vehicle`)**: The `Vehicle` class is declared as `abstract`. It defines common attributes and methods (e.g., `id`, `name`) that all vehicles share, but it cannot be instantiated on its own. It forces subclasses to implement specific behaviors.
--   **Interface (`Sailer`)**: The `Sailer` interface defines a contract with a single method, `dock()`. Any vehicle that can perform this action (like `SeaPlane` and `RiverBarge`) must implement this interface, providing a clear separation of capabilities.
+Or run Main.java from any Java IDE.
 
-### 2. Inheritance
--   The specific vehicle classes (`Helicopter`, `RiverBarge`, `SeaPlane`) **extend** the abstract `Vehicle` class. They inherit its common properties and methods while also adding their own unique attributes and behaviors. This promotes code reuse and establishes a clear hierarchical relationship.
+🧱 OOP Principles Demonstrated
+1️⃣ Abstraction
 
-### 3. Polymorphism
--   The `Sailer` interface allows the system to treat different types of vehicles in a uniform way. A collection of `Sailer` objects can be created, and the `dock()` method can be called on each one, regardless of whether it's a `RiverBarge` or a `SeaPlane`. The correct `dock()` implementation is invoked at runtime based on the object's actual type.
+Vehicle (abstract class) defines shared behavior, forcing subclasses to implement specialized logic.
 
-### 4. Encapsulation
--   All classes in the model package encapsulate their data by declaring fields as `private`. Access and modification are controlled through `public` getters and setters, protecting the internal state of the objects and ensuring data integrity.
+Sailer (interface) models capabilities, not classification.
 
-***
+2️⃣ Inheritance
 
-## 🤝 Contributing
+Subclasses such as RiverBarge, Helicopter, and SeaPlane extend the Vehicle base class, inheriting attributes and methods while defining their own behavior.
 
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+3️⃣ Polymorphism
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+The system treats all objects implementing Sailer uniformly.
+Calling dock() triggers the correct implementation based on the actual object type at runtime.
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+4️⃣ Encapsulation
 
-***
+All domain classes follow strict encapsulation:
 
-## 📄 License
+Private fields
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Public getters & setters
+
+Controlled access to maintain data integrity
+
+🤝 Contributing
+
+Contributions are welcomed and appreciated.
+To propose improvements:
+
+Fork the repository
+
+Create a feature branch
+
+Commit your changes
+
+Push the branch
+
+Open a pull request
+
+Issues and enhancement suggestions can also be submitted through GitHub.
+
