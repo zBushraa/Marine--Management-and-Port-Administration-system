@@ -1,4 +1,7 @@
 admin,admin123
 captain,captain123
 user, user123
-operator, operator123murgi,1234
+operator, operator123
+Bushra,123456
+
+Murgi,123456
