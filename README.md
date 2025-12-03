@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/src/assets/marine.jpg" alt="Harbor at Dusk" style="border-radius: 40px; max-width: 50%; height: 40%;"/>
+  <img src="/src/assets/marine.jpg" alt="Harbor at Dusk" style="border-radius: 20px; max-width: 30%; height: 20%;"/>
   <br/><br/>
   <h1><b>🚢 Marine Management & Port Administration System 🚢</b></h1>
   <p>An Architectural Deep-Dive into Advanced Object-Oriented Java</p>
